@@ -1,0 +1,37 @@
+﻿@model DNBase.Models.SubgenreModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>@Html.DisplayFor(model => model.SubgenreName)</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SubgenreID" />
+            <div class="form-group">
+                <p>What is the subgenre name?</p>
+                <input asp-for="SubgenreName" class="form-control" />
+                <span asp-validation-for="SubgenreName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageExists"]</b></span>
+                <span style="color:red;"><b>@TempData["messageSubName"]</b></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Subgenres</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

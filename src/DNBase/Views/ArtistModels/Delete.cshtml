@@ -1,0 +1,37 @@
+﻿@model DNBase.Models.ArtistModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4><span style="color:red"><b>Are you sure you want to delete @Html.DisplayFor(model => model.ArtistName)?</b></span></h4>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Artist:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ArtistName)
+        </dd>
+        <dt class="col-sm-2">
+            Country:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CountryOfOrigin)
+        </dd>
+        <dt class="col-sm-2">
+            Subgenre:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subgenre.SubgenreName)
+        </dd>
+    </dl>
+    <h6><span style="color:red">You will also be deleting all associated albums and tracks.</span></h6>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ArtistID" />
+        <input type="submit" value="Delete" onclick="return confirm('There is no going back now, are you sure?'); " class="btn btn-danger" /> |
+        <a asp-action="Index">Back to Artists</a>
+    </form>
+</div>

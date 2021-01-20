@@ -1,0 +1,18 @@
+﻿@model DNBase.Models.SubgenreModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4><span style="color:red"><b>Are you sure you want to delete @Html.DisplayFor(model => model.SubgenreName)?</b></span></h4>
+
+<span style="color:red;"><b>@TempData["messageCannotDelete"]</b></span>
+
+<div>
+    <hr />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="SubgenreID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to Subgenres</a>
+    </form>
+</div>

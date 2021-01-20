@@ -1,0 +1,18 @@
+﻿@model DNBase.Models.AlbumModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4><span style="color:red"><b>Are you sure you want to delete @Html.DisplayFor(model => model.AlbumName)?</b></span></h4>
+
+<div>
+    <hr />
+    <h6><span style="color:red;"><b>@TempData["messageWillDeleteTracks"]</b></span></h6>
+    <h6><span style="color:red;"><b>@TempData["messageWillDeleteUnknownTracks"]</b></span></h6>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AlbumID" />
+        <input type="submit" value="Delete" onclick="return confirm('There is no going back now, are you sure?'); " class="btn btn-danger" /> |
+        <a asp-action="Index">Back to Albums</a>
+    </form>
+</div>

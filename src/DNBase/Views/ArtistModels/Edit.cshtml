@@ -1,0 +1,48 @@
+﻿@model DNBase.Models.ArtistModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+    <h1>Edit</h1>
+    <h4><span style="color:red;"><b>@TempData["messageExists"]</b></span></h4>
+
+    <h4>@Html.DisplayFor(model => model.ArtistName)</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ArtistID" />
+            <div class="form-group">
+                <p>Please enter the artist</p>
+                <input asp-for="ArtistName" class="form-control" />
+                <span asp-validation-for="ArtistName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageArtist"]</b></span>
+            </div>
+            <div class="form-group">
+                <p>What country are they from?</p>
+                <input asp-for="CountryOfOrigin" class="form-control" />
+                <span asp-validation-for="CountryOfOrigin" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageCountry"]</b></span>
+            </div>
+            <div class="form-group">
+                <p>What is their main subgenre?</p>
+                <input asp-for="Subgenre.SubgenreName" class="form-control" />
+                <span asp-validation-for="Subgenre.SubgenreName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageSubgenre"]</b></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Artists</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

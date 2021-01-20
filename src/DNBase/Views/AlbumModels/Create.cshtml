@@ -1,0 +1,39 @@
+﻿@model DNBase.Models.AlbumModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add an Album</h1>
+<h4><span style="color:red;"><b>@TempData["message"]</b></span></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <p>Please enter the album name</p>
+                <input asp-for="AlbumName" class="form-control" />
+                <span asp-validation-for="AlbumName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageAlbumName"]</b></span>
+            </div>
+            <div class="form-group">
+                <p>Which artist created this album?</p>
+                <input asp-for="Artist.ArtistName" class="form-control" />
+                <span asp-validation-for="Artist.ArtistName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageArtistName"]</b></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Albums</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

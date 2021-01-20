@@ -1,0 +1,85 @@
+﻿@model DNBase.Models.TrackModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.TrackName)</h1>
+<a asp-action="Edit" asp-route-id="@Model.TrackID">Edit</a> |
+<a asp-action="Delete" asp-route-id="@Model.TrackID">Delete</a>
+
+<hr />
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Album:
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-controller="AlbumModels"
+               asp-action="Details" asp-route-id="@Model.Album.AlbumID" style="color:#0366d6">@Html.DisplayFor(model => model.Album.AlbumName)</a>
+        </dd>
+        <dt class="col-sm-2">
+            Artist:
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-controller="ArtistModels"
+               asp-action="Details" asp-route-id="@Model.Album.Artist.ArtistID" style="color:#0366d6">@Html.DisplayFor(model => model.Album.Artist.ArtistName)</a>
+        </dd>
+    </dl>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Listen to the track below:
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <a href="https://www.youtube.com/results?search_query= @Html.DisplayFor(model => model.TrackName) @Html.DisplayFor(model => model.Album.Artist.ArtistName)" 
+                   target="_blank" rel="noopener noreferrer">Youtube</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://open.spotify.com/search/ @Html.DisplayFor(model => model.TrackName) @Html.DisplayFor(model => model.Album.Artist.ArtistName)"
+                   target="_blank" rel="noopener noreferrer">Spotify</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://soundcloud.com/search?q= @Html.DisplayFor(model => model.TrackName) @Html.DisplayFor(model => model.Album.Artist.ArtistName)"
+                   target="_blank" rel="noopener noreferrer">Soundcloud</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://music.apple.com/us/search?term= @Html.DisplayFor(model => model.TrackName) @Html.DisplayFor(model => model.Album.Artist.ArtistName)"
+                   target="_blank" rel="noopener noreferrer">Apple Music</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr />
+<hr />
+<hr />
+
+<text>More music from @Html.DisplayFor(model => model.Album.Artist.ArtistName) on</text>
+        <a href="https://bandcamp.com/search?q= @Html.DisplayFor(model => model.Album.Artist.ArtistName)"
+        target="_blank" rel="noopener noreferrer">Bandcamp</a>
+
+<hr />
+<hr />
+<hr />
+
+<div>
+    <a asp-action="Index">Back to Tracks</a> |
+    <a asp-controller="ArtistModels"
+       asp-action="Details" asp-route-id="@Model.Album.Artist.ArtistID">Go to @Html.DisplayFor(model => model.Album.Artist.ArtistName)</a>
+</div>

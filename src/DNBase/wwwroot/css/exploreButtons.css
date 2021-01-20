@@ -1,0 +1,53 @@
+﻿.buttons body {
+    margin: 0;
+    padding: 0;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .buttons button {
+        width: 200px;
+        height: 70px;
+        border: none;
+        color: #000000;
+        background-color: dimgrey;
+        border-radius: 12px;
+        transition: ease-out 0.3s;
+        font-size: 1.5rem;
+        outline: none;
+        border: 3px solid dimgrey;
+        position: relative;
+        z-index: 1;
+    }
+
+        .buttons button:hover {
+            color: #fff;
+            cursor: pointer;
+            border: #0077FF;
+        }
+
+        .buttons button:before {
+            transition: 0.5s all ease;
+            position: absolute;
+            border-radius: 10px;
+            top: 0;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            opacity: .06;
+            content: "";
+            background-color: #0077FF;
+        }
+
+        .buttons button:hover:before {
+            transition: 0.5s all ease;
+            left: 0;
+            right: 0;
+            opacity: 1;
+            z-index: -1;
+        }
+
+

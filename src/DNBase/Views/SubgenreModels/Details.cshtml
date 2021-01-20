@@ -1,0 +1,31 @@
+﻿@model DNBase.Models.SubgenreModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+    <h1>@Html.DisplayFor(model => model.SubgenreName) Artists</h1>
+    <a asp-action="Edit" asp-route-id="@Model.SubgenreID">Edit</a> | 
+    <a asp-action="Delete" asp-route-id="@Model.SubgenreID">Delete</a>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-2">
+            <table class="table">
+                @foreach (var item in Model.Artists)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="ArtistModels"
+                               asp-action="Details" asp-route-id="@item.ArtistID" style="color:#0366d6">@Html.DisplayFor(modelItem => item.ArtistName)</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to Subgenres</a>
+</div>

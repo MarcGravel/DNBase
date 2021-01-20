@@ -1,0 +1,46 @@
+﻿@model DNBase.Models.TrackModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add a track</h1>
+<h4><span style="color:red;"><b>@TempData["messageExists"]</b></span></h4>
+<h4><span style="color:red;"><b>@TempData["message"]</b></span></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <p>Please enter the track name</p>
+                <input asp-for="TrackName" class="form-control" />
+                <span asp-validation-for="TrackName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageTrackName"]</b></span>
+            </div>
+            <div class="form-group">
+                <p>What album is this from?</p>
+                <input asp-for="Album.AlbumName" class="form-control" />
+                <span asp-validation-for="Album.AlbumName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageAlbumName"]</b></span>
+            </div>
+            <div class="form-group">
+                <p>What is the name of the artist?</p>
+                <input asp-for="Album.Artist.ArtistName" class="form-control" />
+                <span asp-validation-for="Artist.ArtistName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageArtistName"]</b></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Tracks</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

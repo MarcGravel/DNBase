@@ -1,0 +1,42 @@
+﻿@model DNBase.Models.AlbumModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<h4><span style="color:red;"><b>@TempData["message"]</b></span></h4>
+<h4>@Html.DisplayFor(model => model.AlbumName)</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AlbumID" />
+            <div class="form-group">
+                <p>Album name</p>
+                <input asp-for="AlbumName" class="form-control" />
+                <span asp-validation-for="AlbumName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageAlbum"]</b></span>
+            </div>
+            <div class="form-group">
+                <p>Artist name</p>
+                <input asp-for="Artist.ArtistName" class="form-control" />
+                <span asp-validation-for="Artist.ArtistName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["messageArtist"]</b></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Albums</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

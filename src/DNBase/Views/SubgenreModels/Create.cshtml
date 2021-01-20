@@ -1,0 +1,33 @@
+﻿@model DNBase.Models.SubgenreModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add a subgenre</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <p>Please enter the subgenre</p>
+                <input asp-for="SubgenreName" class="form-control" />
+                <span asp-validation-for="SubgenreName" class="text-danger"></span>
+                <span style="color:red;"><b>@TempData["message"]</b></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Subgenres</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

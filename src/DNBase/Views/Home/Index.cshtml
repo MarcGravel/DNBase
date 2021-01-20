@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <head>
+        <link rel="stylesheet" href="~/css/exploreButtons.css" />
+        <link rel="stylesheet" href="~/css/darkmode.css" />
+    </head>
+<div class="jumbotron">
+    <h1 style="text-align:center;">DNBase</h1>
+    <p style="text-align:center">
+        <b>
+            DNBase is a web database to view Drum & Bass subgenres
+            and artists. All artists and tracks are also linked to listen and explore.
+            This is made using ASP.NET Core MVC and Entity Framework.
+        </b>
+    </p>
+</div>
+<div>
+    <h3 style="text-align:center;">Use the navigation bar to explore the site</h3>
+</div>
+
+<hr />
+
+<div class="buttons">
+    <h5>Or explore new music below!</h5>
+    <form asp-action="Button">
+        <button name="button" value="btnArtist">Random Artist</button>
+        <button name="button" value="btnTrack">Random Track</button>
+    </form>
+</div>
+

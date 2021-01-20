@@ -1,0 +1,16 @@
+﻿@model DNBase.Models.TrackModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4><span style="color:red"><b>Are you sure you want to delete @Html.DisplayFor(model => model.TrackName)?</b></span></h4>
+
+<div>
+    <hr />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TrackID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to Tracks</a>
+    </form>
+</div>

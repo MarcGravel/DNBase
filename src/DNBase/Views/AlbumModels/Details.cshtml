@@ -1,0 +1,39 @@
+﻿@model DNBase.Models.AlbumModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.AlbumName)</h1>
+<h6>by @Html.DisplayFor(model => model.Artist.ArtistName)</h6>
+<a asp-action="Edit" asp-route-id="@Model.AlbumID">Edit</a> | 
+<a asp-action="Delete" asp-route-id="@Model.AlbumID">Delete</a>
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tracks
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Tracks)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="TrackModels"
+                       asp-action="Details" asp-route-id="@item.TrackID">@Html.DisplayFor(modelItem => item.TrackName)</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">All Albums</a> |
+    <a asp-controller="ArtistModels"
+       asp-action="Details" asp-route-id="@Model.ArtistID">@Html.DisplayFor(model => model.Artist.ArtistName) albums</a>
+</div>
